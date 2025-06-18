@@ -1,0 +1,50 @@
+﻿@model URLCutting.Models.ShortUrl
+@{
+    ViewData["Title"] = "Редактировать ссылку";
+}
+
+<div class="container" style="max-width: 600px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+    <h1 style="color: #2c3e50; text-align: center; margin-bottom: 30px;">Редактировать ссылку</h1>
+
+    <div style="background-color: #f8f9fa; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <form asp-action="Edit" method="post" id="editForm">
+            <input type="hidden" asp-for="Id" />
+
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-weight: bold; color: #495057; margin-bottom: 5px;">Оригинальная ссылка:</label>
+                <input asp-for="OriginalUrl" class="form-control"
+                       style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;" />
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-weight: bold; color: #495057; margin-bottom: 5px;">Сокращённый код:</label>
+                <input asp-for="ShortCode" class="form-control"
+                       style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;" />
+                <span asp-validation-for="ShortCode" style="color: #dc3545; font-size: 14px;"></span>
+            </div>
+        </form>
+
+        <div style="display: flex; gap: 10px; margin-top: 25px;">
+            <button type="submit" form="editForm"
+                    style="flex: 1; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                Сохранить
+            </button>
+
+            <form asp-action="GenerateCode" method="post" style="flex: 1;">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <button type="submit"
+                        style="width: 100%; padding: 10px; background-color: #17a2b8; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                    Сократить
+                </button>
+            </form>
+
+            <form asp-action="Delete" method="post" onsubmit="return confirm('Вы уверены, что хотите удалить эту ссылку?');" style="flex: 1;">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <button type="submit"
+                        style="width: 100%; padding: 10px; background-color: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                    Удалить
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
