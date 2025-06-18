@@ -41,7 +41,6 @@ namespace URLCutting.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("ShortCode")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");

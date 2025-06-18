@@ -12,7 +12,7 @@ using URLCutting.Data;
 namespace URLCutting.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250617212137_InitialCreate")]
+    [Migration("20250618090738_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -44,7 +44,6 @@ namespace URLCutting.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("ShortCode")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");

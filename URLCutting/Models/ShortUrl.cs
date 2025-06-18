@@ -9,7 +9,7 @@ namespace URLCutting.Models
         [Required]
         public string OriginalUrl { get; set; }
 
-        public string ShortCode { get; set; }
+        public string? ShortCode { get; set; }
 
         public int Clicks { get; set; } = 0;
 
